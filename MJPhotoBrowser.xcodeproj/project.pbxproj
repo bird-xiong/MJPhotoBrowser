@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C1C4AD21DD0A87400C1F065 /* mj.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C1C4AD11DD0A87400C1F065 /* mj.gif */; };
 		7D7F322B1B0F0ADE00A010CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F322A1B0F0ADE00A010CD /* main.m */; };
 		7D7F322E1B0F0ADE00A010CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F322D1B0F0ADE00A010CD /* AppDelegate.m */; };
 		7D7F32341B0F0ADE00A010CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D7F32321B0F0ADE00A010CD /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C1C4AD11DD0A87400C1F065 /* mj.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mj.gif; sourceTree = "<group>"; };
 		791CB7C61646A42E1BEED64A /* libPods-MJPhotoBrowser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MJPhotoBrowser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7F32251B0F0ADE00A010CD /* MJPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MJPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7F32291B0F0ADE00A010CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		7D7F32281B0F0ADE00A010CD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3C1C4AD11DD0A87400C1F065 /* mj.gif */,
 				7D7F32291B0F0ADE00A010CD /* Info.plist */,
 				7D7F322A1B0F0ADE00A010CD /* main.m */,
 			);
@@ -225,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C1C4AD21DD0A87400C1F065 /* mj.gif in Resources */,
 				7D7F32341B0F0ADE00A010CD /* Main.storyboard in Resources */,
 				7D7F32391B0F0ADE00A010CD /* LaunchScreen.xib in Resources */,
 				7D7F325D1B0F0B9100A010CD /* MJPhotoBrowser.bundle in Resources */,
