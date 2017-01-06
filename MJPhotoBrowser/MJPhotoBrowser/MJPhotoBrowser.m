@@ -68,6 +68,10 @@ static NSString *const ReusableRightIdentifier      = @"ReusableRightIdentifier"
     collectionView.contentInset         = UIEdgeInsetsMake(0, 0, 0, kPadding);
     [self.view addSubview:collectionView];
     
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0f) {
+        collectionView.prefetchingEnabled = NO;
+    }
+    
     [collectionView registerClass:[MJPhotoView class] forCellWithReuseIdentifier:ReusableLeftCellIdentifier];
     [collectionView registerClass:[MJPhotoView class] forCellWithReuseIdentifier:ReusableMidIdentifier];
     [collectionView registerClass:[MJPhotoView class] forCellWithReuseIdentifier:ReusableRightIdentifier];
@@ -265,6 +269,8 @@ static NSString *const ReusableRightIdentifier      = @"ReusableRightIdentifier"
     UIViewController *toViewController      = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *fromViewController    = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIView *containerView = [transitionContext containerView];
+    [containerView addSubview:toViewController.view];
+    toViewController.view.alpha = 0;
     
     UIView *backgroudView = [[UIView alloc] initWithFrame:containerView.bounds];
     backgroudView.backgroundColor = [UIColor blackColor];
@@ -274,6 +280,7 @@ static NSString *const ReusableRightIdentifier      = @"ReusableRightIdentifier"
     if (image == nil && photo.placeholder) {
         image = photo.placeholder;
     }
+    
     //origin rect
     CGRect orginRect    = [photo.srcImageView.superview convertRect:photo.srcImageView.frame toView:containerView];
     //finial rect
@@ -296,7 +303,7 @@ static NSString *const ReusableRightIdentifier      = @"ReusableRightIdentifier"
             backgroudView.alpha = 1;
         } completion:^(BOOL finished) {
              photo.srcImageView.hidden = NO;
-            [containerView addSubview:toViewController.view];
+            toViewController.view.alpha = 1;
             [animatingImageView removeFromSuperview];
             [backgroudView removeFromSuperview];
             [transitionContext completeTransition:YES];
@@ -304,8 +311,7 @@ static NSString *const ReusableRightIdentifier      = @"ReusableRightIdentifier"
     }
     //dismiss
     else if([fromViewController isEqual:self]){
-        [containerView addSubview:toViewController.view];
-        [containerView sendSubviewToBack:toViewController.view];
+        toViewController.view.alpha = 1;
         fromViewController.view.hidden  = YES;
         animatingImageView.frame        = finialRect;
         backgroudView.alpha = 1;
@@ -315,7 +321,6 @@ static NSString *const ReusableRightIdentifier      = @"ReusableRightIdentifier"
             backgroudView.alpha = 0;
         } completion:^(BOOL finished) {
             photo.srcImageView.hidden = NO;
-            [containerView addSubview:toViewController.view];
             [animatingImageView removeFromSuperview];
             [backgroudView removeFromSuperview];
             [transitionContext completeTransition:YES];
